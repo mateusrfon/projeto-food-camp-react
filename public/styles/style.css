@@ -1,0 +1,155 @@
+/* Usar overflow-x: scroll */
+body {
+    background-color: #e5e5e5;
+    font-family: 'Roboto';
+    padding: 123px 19px 108px 19px;
+}
+
+.top {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 92px;
+    background-color: #cf2b2b;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 21px;
+    z-index: 10;
+}
+
+.title {
+    font-family: 'Righteous';
+    font-size: 44px;
+    letter-spacing: -0.5px;
+    color: #ffffff;
+}
+
+.description {
+    font-size: 18px;
+    color: #ffffff;
+}
+
+.end {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 92px;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.end button {
+    width: 364px;
+    height: 53px;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-style: none;
+    font-size: 20px;
+    line-height: 23.44px;
+    
+}
+
+.end p {
+    color: #ffffff;
+}
+
+.bgray {
+    background-color: #cbcbcb;
+}
+
+.bgreen {
+    background-color: #32B72F;
+}
+
+span {
+    font-family: 'Righteous';
+    font-size: 26px;
+    letter-spacing: 0.5px;
+    color: #333;
+}
+
+.choicesBox {
+    display: flex;
+    overflow-x: scroll;
+    z-index: 1;
+}
+
+.choices {
+    margin-top: 17px;
+    margin-bottom: 27px;
+    margin-right: 16px;
+    display: flex;
+    flex-direction: column;
+    padding: 18px 14px 0 14px;
+    width: 172px;
+    height: 216px;
+    background-color: #ffffff;
+    border-radius: 9px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    position: relative;
+    z-index: 1;
+}
+
+.selected-border {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border-radius: inherit;
+    border: 5px solid #32B72F;
+}
+
+.selected-icon {
+    font-size: 16px;
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    color: #32B72F;
+}
+
+.choices img {
+    width: 144px;
+    height: 87px;
+    margin-bottom: 8px;
+    object-fit: cover;
+}
+
+.goods, .price {
+    font-family: 'Roboto';
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #333;
+}
+
+.choices .info {
+    text-align: left;
+    margin-bottom: 10px;
+    font-size: 15px;
+    color: #a6a6a6;
+}
+
+.choices span {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #000;
+}
+
+.black {
+    color: #000;
+}
+
+.selected {
+    display: initial;
+}
+
