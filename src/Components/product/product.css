@@ -1,0 +1,23 @@
+.counter {
+    width: 47px;
+    height: 19px;
+    font-size: 16px;
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.counter button {
+    background-color: inherit;
+}
+
+.plus {
+    color: #CF2B2B;
+}
+
+.minus {
+    color: green;
+}
