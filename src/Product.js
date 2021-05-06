@@ -1,7 +1,12 @@
+import SelectProduct from "./SelectProduct";
+import React from "react";
+
 export default function Product(props) {
+    const [selected, setSelected] = React.useState('');
+    console.log(selected);
     return (
-        <button class="choices" onclick={'memebreak'}>
-            <div class="selected-border">
+        <button class="choices" onClick={() => SelectProduct(setSelected)}>
+            <div class={"selected-border " + selected}>
                 {/*counter*/}
             </div>            
             <img src={props.img} alt={props.name}/>
