@@ -1,17 +1,16 @@
-export default function FixedBars() {
+import React from 'react';
+
+export default function FixedBars(props) {
     return (
         <>
-            {/*<!--TOP-->*/}
             <div className="top">
                 <div className="title">FoodCamp</div>
                 <div className="description">Sua comida em 6 minutos</div>
             </div>
-            {/*<!--TOP-->*/}   
-            {/*<!--END-->*/}
+
             <div className="end">
-                <button className="bgray" onclick="Close()"><p>Selecione os 3 itens<br/>para fechar o pedido</p></button>
+                <button className={props.end.color} >{props.end.html}</button>
             </div>
-            {/*<!--END-->*/}
         </>
     );
 }

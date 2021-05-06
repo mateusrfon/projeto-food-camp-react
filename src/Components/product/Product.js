@@ -5,25 +5,25 @@ import RemoveProduct from "../RemoveProduct";
 
 import './product.css';
 
-//no RemoveProduct se qtd = 1 setSelected('')
-
 export default function Product(props) {
+    const close = props.close;
+    const [closeButton, setCloseButton] = props.closeButton;
     const [selected, setSelected] = React.useState('');
-    const [counter, setCounter] = React.useState(0);
+    const [numberProducts, setNumberProducts] = React.useState(0);
     
     return (
-        <button className="choices" onClick={() => SelectProduct(selected, setSelected, setCounter)}>
+        <div className="choices" onClick={() => SelectProduct(selected, setSelected, setNumberProducts, closeButton, setCloseButton, close, props.setEnd)}>
             <div className={"selected-border " + selected}>
                 <div className="counter">
-                    <button className="minus" onClick={() => RemoveProduct(counter, setCounter, setSelected)}>-</button>
-                    {counter}
-                    <button className="plus" onClick={() => AddProduct(counter, setCounter)}>+</button>
+                    <button className="minus" onClick={() => RemoveProduct(setSelected, numberProducts, setNumberProducts, closeButton, setCloseButton, close, props.setEnd)}>-</button>
+                    {numberProducts}
+                    <button className="plus" onClick={() => AddProduct(numberProducts, setNumberProducts, closeButton, setCloseButton, close, props.setEnd)}>+</button>
                 </div>
             </div>            
             <img src={props.img} alt={props.name}/>
             <p className="goods"><strong>{props.name}</strong></p>
             <p className="info">{props.description}</p>
             <p className="goods black">R$ <span className="price black">{props.price}</span></p>
-        </button>
+        </div>
     );
 }
