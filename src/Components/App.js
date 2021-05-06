@@ -6,16 +6,15 @@ export default function App() {
     const [dish, setDish] = React.useState(0);
     const [drink, setDrink] = React.useState(0);
     const [desert, setDesert] = React.useState(0);
-    const close = (dish > 0 && drink > 0 && desert > 0);
 
     const [end, setEnd] = React.useState({color: 'bgray', html: <p>Selecione os 3 itens<br/>para fechar o pedido</p>});
 
     return (
         <>
             <FixedBars end={end}/>
-            <GoodsRow title='Primeiro, seu prato' goods={dishes} closeButton={[dish, setDish]} close={close} setEnd={setEnd}/>
-            <GoodsRow title='Agora, sua bebida' goods={drinks} closeButton={[drink, setDrink]} close={close} setEnd={setEnd}/>
-            <GoodsRow title='Por fim, sua sobremesa' goods={deserts} closeButton={[desert, setDesert]} close={close} setEnd={setEnd}/>
+            <GoodsRow title='Primeiro, seu prato' goods={dishes} closeButton={[dish, setDish]} close={(drink > 0 && desert > 0)} setEnd={setEnd}/>
+            <GoodsRow title='Agora, sua bebida' goods={drinks} closeButton={[drink, setDrink]} close={(dish > 0 && desert > 0)} setEnd={setEnd}/>
+            <GoodsRow title='Por fim, sua sobremesa' goods={deserts} closeButton={[desert, setDesert]} close={(dish > 0 && drink > 0)} setEnd={setEnd}/>
         </>
     );
 }
