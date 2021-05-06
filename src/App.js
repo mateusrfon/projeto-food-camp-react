@@ -15,7 +15,7 @@ export default function App() {
             {/*<!--END-->*/}
             {/*<!--CONTEUDO-->*/}
             <span>Primeiro, seu prato</span>
-            <div class="choicesBox dishes">
+            <div class="choices-box dishes">
                 <button class="choices dish1" onclick="SelectDish('.dish1')">
                     <div class="selected-border">
                         <ion-icon name="checkmark-circle" class="selected-icon"></ion-icon>
@@ -45,7 +45,7 @@ export default function App() {
                 </button>
             </div>
             <span>Agora, sua bebida</span>
-            <div class="choicesBox drinks">
+            <div class="choices-box drinks">
                 <button class="choices drink1" onclick="SelectDrink('.drink1')">
                     <div class="selected-border">
                         <ion-icon name="checkmark-circle" class="selected-icon"></ion-icon>
@@ -75,7 +75,7 @@ export default function App() {
                 </button>
             </div>
             <span>Por fim, sua sobremesa</span>
-            <div class="choicesBox deserts">
+            <div class="choices-box deserts">
                 <button class="choices desert1" onclick="SelectDesert('.desert1')">
                     <div class="selected-border">
                         <ion-icon name="checkmark-circle" class="selected-icon"></ion-icon>
