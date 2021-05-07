@@ -1,4 +1,16 @@
-export default function Finish(receipt) {
+import FinishCheckout from './FinishCheckout';
+import React from 'react';
+import {
+    Link
+  } from 'react-router-dom';
+import './checkout.css';
+
+export default function Checkout(props) {
+    function checkout() {
+        FinishCheckout(props.receipt);
+    }
+
+    const receipt = props.receipt;
     function products(array, type) {
         let text = '';
         if (type === 'dish') {
@@ -19,7 +31,7 @@ export default function Finish(receipt) {
         })
         return text;
     }
-
+    
     function price(obj) {
         let price = 0;
         obj.dish.forEach((e) => {
@@ -33,7 +45,7 @@ export default function Finish(receipt) {
         });
         return price.toFixed(2).replace('.',',');
     }
-
+    
     const msg = window.encodeURIComponent(
         "Olá, gostaria de fazer o *pedido*:" +
         products(receipt.dish, 'dish') +
@@ -42,8 +54,27 @@ export default function Finish(receipt) {
         "\n*Total*: R$ " + "*" + price(receipt) + "*"
     );
 
-    const celular = "5571992862087";
+    return (
+        <>
+            <div className="top">
+                <div className="title">FoodCamp</div>
+                <div className="description">Sua comida em 6 minutos</div>
+            </div>
 
-    window.open("https://wa.me/" + celular + "?text=" + msg, "_blank")
+            <div className='checkout'>
+                <span>Revise seu pedido</span>
+
+                <div className="checkout-box">
+                </div>
+
+                <div className='finish-checkout' onClick={checkout}>Tudo certo, pode pedir!</div>
+                <Link to='/' style={{ textDecoration: 'none'}}>
+                    <div className='cancel'>
+                        Cancelar
+                    </div>
+                </Link>
+            </div>
+        </>
+    );
 }
 

@@ -1,11 +1,12 @@
 import React from 'react';
-import Finish from './Finish';
+import {
+    Link
+  } from 'react-router-dom';
 
 export default function FixedBars(props) {
-    function banana() {
-        Finish(props.receipt);
-    }
-    const func = props.end.color === 'bgreen' ? banana : null;
+
+    const link = (props.end.color === 'bgreen') ? '/checkout' : '/';
+
     return (
         <>
             <div className="top">
@@ -13,9 +14,11 @@ export default function FixedBars(props) {
                 <div className="description">Sua comida em 6 minutos</div>
             </div>
 
-            <div className="end" onClick={func}>
-                <button className={props.end.color} >{props.end.html}</button>
-            </div>
+            <Link to={link}>
+                <div className="end">
+                    <button className={props.end.color} >{props.end.html}</button>
+                </div>
+            </Link>
         </>
     );
 }

@@ -1,6 +1,13 @@
 import FixedBars from "./FixedBars";
 import GoodsRow from "./GoodsRow";
 import React from 'react';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+  } from 'react-router-dom';
+import Checkout from './Checkout/Checkout';
 
 export default function App() {
     const [dish, setDish] = React.useState(0);
@@ -15,12 +22,17 @@ export default function App() {
     })
 
     return (
-        <>
-            <FixedBars end={end} receipt={receipt}/>
-            <GoodsRow title='Primeiro, seu prato' type='dish' goods={dishes} closeButton={[dish, setDish]} close={(drink > 0 && desert > 0)} setEnd={setEnd} receipt={receipt} setReceipt={setReceipt}/>
-            <GoodsRow title='Agora, sua bebida' type='drink' goods={drinks} closeButton={[drink, setDrink]} close={(dish > 0 && desert > 0)} setEnd={setEnd} receipt={receipt} setReceipt={setReceipt}/>
-            <GoodsRow title='Por fim, sua sobremesa' type='desert' goods={deserts} closeButton={[desert, setDesert]} close={(dish > 0 && drink > 0)} setEnd={setEnd} receipt={receipt} setReceipt={setReceipt}/>
-        </>
+        <Router>
+            <Route exact path="/">
+                <FixedBars end={end} receipt={receipt}/>
+                <GoodsRow title='Primeiro, seu prato' type='dish' goods={dishes} closeButton={[dish, setDish]} close={(drink > 0 && desert > 0)} setEnd={setEnd} receipt={receipt} setReceipt={setReceipt}/>
+                <GoodsRow title='Agora, sua bebida' type='drink' goods={drinks} closeButton={[drink, setDrink]} close={(dish > 0 && desert > 0)} setEnd={setEnd} receipt={receipt} setReceipt={setReceipt}/>
+                <GoodsRow title='Por fim, sua sobremesa' type='desert' goods={deserts} closeButton={[desert, setDesert]} close={(dish > 0 && drink > 0)} setEnd={setEnd} receipt={receipt} setReceipt={setReceipt}/>
+            </Route>
+            <Route exact path="/checkout">
+                <Checkout receipt={receipt}/>
+            </Route>
+        </Router>
     );
 }
 
