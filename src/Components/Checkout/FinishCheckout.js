@@ -1,5 +1,5 @@
 export default function FinishCheckout(receipt) {
-    function products(array, type) {
+    function productsCheckout(array, type) {
         let text = '';
         if (type === 'dish') {
             text = "\n- *Prato*: ";
@@ -20,7 +20,7 @@ export default function FinishCheckout(receipt) {
         return text;
     }
 
-    function price(obj) {
+    function priceCheckout(obj) {
         let price = 0;
         obj.dish.forEach((e) => {
             price += e[0]*e[2];
@@ -36,10 +36,10 @@ export default function FinishCheckout(receipt) {
 
     const msg = window.encodeURIComponent(
         "Olá, gostaria de fazer o *pedido*:" +
-        products(receipt.dish, 'dish') +
-        products(receipt.drink, 'drink') +
-        products(receipt.desert, 'desert') +
-        "\n*Total*: R$ " + "*" + price(receipt) + "*"
+        productsCheckout(receipt.dish, 'dish') +
+        productsCheckout(receipt.drink, 'drink') +
+        productsCheckout(receipt.desert, 'desert') +
+        "\n*Total*: R$ " + "*" + priceCheckout(receipt) + "*"
     );
 
     const celular = "5571992862087";

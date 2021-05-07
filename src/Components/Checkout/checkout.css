@@ -12,10 +12,26 @@ body {
     margin: 33px 0;
     flex-shrink: 0;
     width: 377px;
-    height: 201px;
+    min-height: 201px;
     border-radius: 9px;
     background-color: #fff;
     box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.15);
+    padding: 30px 26px 26px 26px;
+}
+
+.checkout-box div {
+    display: flex;
+    height: 33px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.checkout-box p {
+    font: 'Roboto';
+    font-size: 22px;
+    line-height: 26px;
+    letter-spacing: 1.8%;
+    color: #333;
 }
 
 .finish-checkout {
@@ -52,4 +68,8 @@ body {
     justify-content: center;
     font-weight: 700;
     letter-spacing: 1.8%;
+}
+
+.bold {
+    font-weight: 700;
 }

@@ -6,33 +6,35 @@ import {
 import './checkout.css';
 
 export default function Checkout(props) {
-    function checkout() {
-        FinishCheckout(props.receipt);
+    const receipt = props.receipt;
+
+    function resetReceipt() {
+        props.setReceipt({
+            dish:[[0,'none',0], [0,'none',0], [0,'none',0]],
+            drink:[[0,'none',0], [0,'none',0], [0,'none',0]],
+            desert:[[0,'none',0], [0,'none',0], [0,'none',0]]
+        });
     }
 
-    const receipt = props.receipt;
-    function products(array, type) {
-        let text = '';
-        if (type === 'dish') {
-            text = "\n- *Prato*: ";
-        } else if (type === 'drink') {
-            text = "\n- *Bebida*: ";
-        } else {
-            text = "\n- *Sobremesa*: ";
-        }
+    function checkout() {
+        FinishCheckout(receipt);
+    }
+
+    function productsCheckout(array) {
+        const text = [];
         array.forEach((e, i) => {
             if (e[0] > 0) {
-                if (array.length - 1 === i) {
-                    text += `${e[1]}${e[0] > 1 ? ` (${e[0]}x)` : ''}`;
-                } else {
-                    text += `${e[1]}${e[0] > 1 ? ` (${e[0]}x)` : ''}, `;
-                }
+                text.push(<div><p>{e[1]}</p><p>{(e[0]*e[2]).toFixed(2).replace('.',',')}</p></div>);
             }
-        })
-        return text;
+        });
+        return (
+            <>
+                {text}
+            </>
+        );
     }
-    
-    function price(obj) {
+
+    function priceCheckout(obj) {
         let price = 0;
         obj.dish.forEach((e) => {
             price += e[0]*e[2];
@@ -43,15 +45,21 @@ export default function Checkout(props) {
         obj.desert.forEach((e) => {
             price += e[0]*e[2];
         });
-        return price.toFixed(2).replace('.',',');
+        return (
+            <div>
+                <p className='bold'>TOTAL</p>
+                <p className='bold'>R$ {price.toFixed(2).replace('.',',')}</p>
+            </div>
+        );
     }
     
-    const msg = window.encodeURIComponent(
-        "Olá, gostaria de fazer o *pedido*:" +
-        products(receipt.dish, 'dish') +
-        products(receipt.drink, 'drink') +
-        products(receipt.desert, 'desert') +
-        "\n*Total*: R$ " + "*" + price(receipt) + "*"
+    const checkoutItems = (
+        <>
+        {productsCheckout(receipt.dish)}
+        {productsCheckout(receipt.drink)}
+        {productsCheckout(receipt.desert)}
+        {priceCheckout(receipt)}
+        </>
     );
 
     return (
@@ -65,10 +73,11 @@ export default function Checkout(props) {
                 <span>Revise seu pedido</span>
 
                 <div className="checkout-box">
+                    {checkoutItems}
                 </div>
 
                 <div className='finish-checkout' onClick={checkout}>Tudo certo, pode pedir!</div>
-                <Link to='/' style={{ textDecoration: 'none'}}>
+                <Link to='/' style={{ textDecoration: 'none'}} onClick={resetReceipt}>
                     <div className='cancel'>
                         Cancelar
                     </div>

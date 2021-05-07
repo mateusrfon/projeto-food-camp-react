@@ -30,7 +30,7 @@ export default function App() {
                 <GoodsRow title='Por fim, sua sobremesa' type='desert' goods={deserts} closeButton={[desert, setDesert]} close={(dish > 0 && drink > 0)} setEnd={setEnd} receipt={receipt} setReceipt={setReceipt}/>
             </Route>
             <Route exact path="/checkout">
-                <Checkout receipt={receipt}/>
+                <Checkout receipt={receipt} setReceipt={setReceipt}/>
             </Route>
         </Router>
     );
