@@ -8,13 +8,18 @@ export default function App() {
     const [desert, setDesert] = React.useState(0);
 
     const [end, setEnd] = React.useState({color: 'bgray', html: <p>Selecione os 3 itens<br/>para fechar o pedido</p>});
+    const [receipt, setReceipt] = React.useState({
+        dish:[[0,'none',0], [0,'none',0], [0,'none',0]],
+        drink:[[0,'none',0], [0,'none',0], [0,'none',0]],
+        desert:[[0,'none',0], [0,'none',0], [0,'none',0]]
+    })
 
     return (
         <>
-            <FixedBars end={end}/>
-            <GoodsRow title='Primeiro, seu prato' goods={dishes} closeButton={[dish, setDish]} close={(drink > 0 && desert > 0)} setEnd={setEnd}/>
-            <GoodsRow title='Agora, sua bebida' goods={drinks} closeButton={[drink, setDrink]} close={(dish > 0 && desert > 0)} setEnd={setEnd}/>
-            <GoodsRow title='Por fim, sua sobremesa' goods={deserts} closeButton={[desert, setDesert]} close={(dish > 0 && drink > 0)} setEnd={setEnd}/>
+            <FixedBars end={end} receipt={receipt}/>
+            <GoodsRow title='Primeiro, seu prato' type='dish' goods={dishes} closeButton={[dish, setDish]} close={(drink > 0 && desert > 0)} setEnd={setEnd} receipt={receipt} setReceipt={setReceipt}/>
+            <GoodsRow title='Agora, sua bebida' type='drink' goods={drinks} closeButton={[drink, setDrink]} close={(dish > 0 && desert > 0)} setEnd={setEnd} receipt={receipt} setReceipt={setReceipt}/>
+            <GoodsRow title='Por fim, sua sobremesa' type='desert' goods={deserts} closeButton={[desert, setDesert]} close={(dish > 0 && drink > 0)} setEnd={setEnd} receipt={receipt} setReceipt={setReceipt}/>
         </>
     );
 }
