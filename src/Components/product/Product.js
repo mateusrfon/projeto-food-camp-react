@@ -10,10 +10,11 @@ export default function Product(props) {
     const [closeButton, setCloseButton] = props.closeButton;
     const [selected, setSelected] = React.useState('');
     const [numberProducts, setNumberProducts] = React.useState(0);
-    const receiptInfo = {i: props.indice, type: props.type, receipt: props.receipt, 
-        setReceipt: props.setReceipt, name: props.name, price: props.price.replace(',','.')};
-    //receipt.type[i] = [numberProducts, props.name, parseFloat(props.price.replace(',','.'))]
-
+    const receiptInfo = {
+        i: props.indice, type: props.type, receipt: props.receipt, 
+        setReceipt: props.setReceipt, name: props.name, price: props.price.replace(',','.')
+    };
+    
     return (
         <div className="choices" onClick={() => SelectProduct(selected, setSelected, setNumberProducts, closeButton, setCloseButton, close, props.setEnd, receiptInfo)}>
             <div className={"selected-border " + selected}>
@@ -30,11 +31,3 @@ export default function Product(props) {
         </div>
     );
 }
-
-//sempre que der um add, select ou remove preciso pegar
-// {id{props.key}: [numberProducts, props.name, parseFloat(props.price.replace(',','.'))] }
-//type = props.type
-//i = props.key
-
-//no add, selec e remove:
-//receipt.type[i] = [numberProducts, props.name, parseFloat(props.price.replace(',','.'))]
